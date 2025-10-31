@@ -1,0 +1,21 @@
+# Visual Studio缓存文件
+.vs/
+*.ipch
+*.VC.db
+*.sdf
+*.opensdf
+
+# 编译产物
+x64/
+Debug/
+Release/
+*.obj
+*.pch
+*.pdb
+*.exe
+*.ilk
+*.log
+
+# 其他临时文件
+*.suo
+*.user

@@ -68,6 +68,8 @@ BEGIN_MESSAGE_MAP(CPetStoreManageDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CPetStoreManageDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDOK, &CPetStoreManageDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDCANCEL, &CPetStoreManageDlg::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 
@@ -161,17 +163,17 @@ HCURSOR CPetStoreManageDlg::OnQueryDragIcon()
 void CPetStoreManageDlg::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	Admin admin = Admin(_T("200572"), _T("123456"), _T("20110405"));
-	Pet pet = Pet(_T("123"), _T("123"), _T("001"), _T("sunheng"), _T("dog"), _T("18"), _T("75"), _T("1200"), _T("cute"),
-		_T("shanchuan"), _T("20240102"), _T("未出售"), _T("无"));
+	Admin admin = Admin(_T("1001"), _T("123456"), _T("1001"));
+	Pet pet = Pet(_T("123"), _T("123"), _T("001"), _T("Wangwang"), _T("dog"), _T("2"), _T("5"), _T("1200"), _T("cute"),
+		_T("Shanchuan"), _T("20240102"), _T("已出售"), _T("Chuanshan"));
 	//获取账号和密码
 	CString acc,pwd;
 	GetDlgItemText(IDC_EDIT1, acc);
 	GetDlgItemText(IDC_EDIT2, pwd);
-	//管理员登录成功，跳转到管理界面
+	//登录成功，跳转到管理界面
 	if (!acc.CompareNoCase(admin.account) && !pwd.CompareNoCase(admin.password))
 	{
-		MessageBox(admin.id+_T("管理员登录成功"),_T("登录成功"));
+		MessageBox(admin.id+_T("用户登录成功"),_T("登录成功"));
 		MainSys mainSys;
 		mainSys.DoModal();
 	}
@@ -187,4 +189,16 @@ void CPetStoreManageDlg::OnBnClickedButton1()
 	}
 
 
+}
+
+void CPetStoreManageDlg::OnBnClickedOk()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CDialogEx::OnOK();
+}
+
+void CPetStoreManageDlg::OnBnClickedCancel()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CDialogEx::OnCancel();
 }

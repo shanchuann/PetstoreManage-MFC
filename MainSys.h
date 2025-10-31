@@ -40,4 +40,5 @@ public:
 	CString m_date;
 	CString m_state;
 	CString M_customer;
+	afx_msg void OnBnClickedCancel();
 };

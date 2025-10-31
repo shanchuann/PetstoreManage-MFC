@@ -56,6 +56,7 @@ BEGIN_MESSAGE_MAP(MainSys, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON3, &MainSys::OnBnClickedButton3)
 	ON_BN_CLICKED(IDC_BUTTON4, &MainSys::OnBnClickedButton4)
 	ON_BN_CLICKED(IDC_BUTTON5, &MainSys::OnBnClickedButton5)
+	ON_BN_CLICKED(IDCANCEL, &MainSys::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 
@@ -82,9 +83,8 @@ BOOL MainSys::OnInitDialog()
 	m_list.InsertColumn(9, _T("状态"), LVCFMT_LEFT, 100);
 	m_list.InsertColumn(10, _T("顾客"), LVCFMT_LEFT, 100);
 	//初始化一个宠物信息并写入表格
-	Pet p = Pet(_T("123"), _T("123"), _T("001"),
-		_T("sunheng"), _T("dog"), _T("18"), _T("75"), _T("1200"), _T("cute"),
-		_T("shanchuan"), _T("20240102"), _T("未出售"), _T("无"));
+	Pet p = Pet(_T("123"), _T("123"), _T("001"), _T("Wangwang"), _T("dog"), _T("2"), _T("5"), _T("1200"), _T("cute"),
+		_T("Shanchuan"), _T("20240102"), _T("已出售"), _T("Chuanshan"));
 	m_list.InsertItem(0, (LPCTSTR)p.id);
 	m_list.SetItemText(0, 0, (LPCTSTR)p.id);
 	m_list.SetItemText(0, 1, (LPCTSTR)p.name);
@@ -321,4 +321,13 @@ void MainSys::OnBnClickedButton5()
 		file.Close();
 		MessageBox(_T("保存成功"), _T("保存成功"));
 	}	
+}
+
+void MainSys::OnBnClickedCancel()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CDialogEx::OnCancel();
+	//退出整个程序
+	AfxGetApp()->m_pMainWnd->SendMessage(WM_CLOSE);
+
 }
